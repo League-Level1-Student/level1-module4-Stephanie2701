@@ -30,10 +30,12 @@ public class nastysurprise implements ActionListener{
 	        frame.pack();
 	}
 	public void actionPerformed(ActionEvent e) {
+		
 		if(e.getSource()==button) {
-			showPictureFromTheInternet("https://thenypost.files.wordpress.com/2018/10/102318-dogs-color-determine-disesases-life.jpg?quality=90&strip=all&w=1236&h=820&crop=1");
+		 
+			showPictureFromTheInternet("https://i.pinimg.com/originals/bf/80/88/bf808800e8e1c409eab2fba053bfe7ca.jpg");
 		}
-		else {
+		else if(e.getSource()==button1){
 			showPictureFromTheInternet("https://www.rd.com/wp-content/uploads/2017/10/We-Say-That-Ghosts-Say-Boo-But-Why-_330536861_Lemon-Tree-Images-1024x683.jpg");
 		}
 	}
@@ -45,8 +47,10 @@ public class nastysurprise implements ActionListener{
 	        URL url = new URL(imageUrl);
 	        Icon icon = new ImageIcon(url);
 	        JLabel imageLabel = new JLabel(icon);
-	        JFrame frame = new JFrame();
-	        frame.add(imageLabel);
+	        JFrame newFrame = new JFrame();
+	        newFrame.add(imageLabel);
+	        newFrame.pack();
+	        newFrame.setVisible(true);
 	       
 	    } catch (MalformedURLException e) {
 	        e.printStackTrace();
