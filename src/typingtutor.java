@@ -17,7 +17,8 @@ public class typingtutor implements KeyListener{
 	JLabel label= new JLabel();
 	Date timeAtStart = new Date();
 	char currentLetter=generateRandomLetter();
-	keypressed f = new keypressed();
+	int numberOfCorrectCharactersTyped=20;
+	int a=0;
 	char generateRandomLetter() {
 	    Random r = new Random();
 	    return (char) (r.nextInt(26) + 'a');	
@@ -54,17 +55,23 @@ public class typingtutor implements KeyListener{
 	    int charactersPerMinute = (int) (charactersPerSecond * 60);
 	    JOptionPane.showMessageDialog(null, "Your typing speed is " + charactersPerMinute + " characters per minute.");
 	}
-	@Override
+	
 	public void keyTyped(KeyEvent e) {
+		if(a>=5) {
+			showTypingSpeed(a);
+		
+		}
 		
 	}
-	@Override
+	
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
 		
 		System.out.println("you typed:"+ e.getKeyChar());
 		if(e.getKeyChar()==currentLetter) {
 			System.out.println("Correct!");
+			a++;
 			panel.setBackground(new Color(51,204,51));
 			
 		}
