@@ -34,7 +34,7 @@ public class SimonSays extends KeyAdapter {
 	// Complete steps 1 - 7 before you test
 	// 1. Declare a JFrame variable
 	JFrame frame= new JFrame();
-	int w=0;
+	int score=0;
 	char currentLetter=generateRandomLetter();
 	char generateRandomLetter() {
 	    Random r = new Random();
@@ -60,9 +60,9 @@ public class SimonSays extends KeyAdapter {
 		// 15. Make a points variable to track the score.
 		
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-		if( e.getKeyCode()== r && e.getKeyChar()==imageIndex ) {
+		if( e.getKeyCode()==imageIndex && simonSays ) {
 		// 17. Increase the value of score
-			w++;
+			score++;
 		// 18. Use the speak method to tell the user they were correct
 			speak("you are correct");
 		}
@@ -70,20 +70,23 @@ public class SimonSays extends KeyAdapter {
 		// say..."
 		else {
 		// 20. Increase the value of score
-			w++;
+			score++;
 		// 21. Use the speak method to tell the user they were correct
 			speak("you are correct");
+		}
 		// 22. Increment tries by 1
-
+			tries++;
 		// 25. If tries is greater than 9 (or however many you want)...
-
+			if(tries>9) {
 		// 26. Tell the user their score
-
+				JOptionPane.showMessageDialog(null, score);
+			}
 		// 27. Exit the program
-
+			System.exit(0);
 		// 23. Dispose of the frame
-
+			frame.dispose();
 		// 24. Call the showImage method to show a new image
+			showImage();
 	}
 
 	private void showImage() {
@@ -144,6 +147,7 @@ public class SimonSays extends KeyAdapter {
 /*
  * BONUS! Add a timer : ~~~ where the code starts running ~~~ timeAtStart =
  * newDate();
+ * 
  *
  * ~~~ where the code ends ~~~ Date timeAtEnd = new Date();
  * System.out.println((timeAtEnd.getTime()-timeAtStart.getTime())/1000);
