@@ -40,10 +40,13 @@ public class SimonSays extends KeyAdapter {
 	    Random r = new Random();
 	    return (char) (r.nextInt(26) + 'a');
 	}
-	public void run() {
+	public void makeAlbum() {
 		// 2. Add the four images that match keyboard keys like this:
 		// images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
 		images.put(new Integer(KeyEvent.VK_UP), "dog1.jpg");
+		images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
+		images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
+		images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
 		
 		
 
@@ -77,7 +80,7 @@ public class SimonSays extends KeyAdapter {
 		// 22. Increment tries by 1
 			tries++;
 		// 25. If tries is greater than 9 (or however many you want)...
-			if(tries>9) {
+			if(tries>2) {
 		// 26. Tell the user their score
 				JOptionPane.showMessageDialog(null, score);
 			}
