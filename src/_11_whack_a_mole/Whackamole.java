@@ -3,7 +3,7 @@ package _11_whack_a_mole;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -16,8 +16,9 @@ public class Whackamole implements ActionListener{
 	JFrame frame= new JFrame();
 	JPanel panel= new JPanel();
 	JButton molebutton= new JButton("mole");
-	Date timeAtStart= new Date(0);
-	a=0;
+	Date timeAtStart= new Date();
+	int moleswhacked=0;
+	
 
 
 
@@ -27,7 +28,7 @@ public class Whackamole implements ActionListener{
 		frame.setSize(new Dimension(300,300));
 		
 		
-
+		
 		
 		
 		for (int i = 0; i < 24; i++) {
@@ -38,7 +39,7 @@ public class Whackamole implements ActionListener{
 
 			} else {
 
-				JButton button= new JButton();
+				JButton button= new JButton("  " );
 				button.addActionListener(this);	
 				panel.add(button);
 				frame.setVisible(true);
@@ -47,11 +48,13 @@ public class Whackamole implements ActionListener{
 			
 			
 		}
-		endGame(timeAtStart,10);
 		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		Random f= new Random();
+		
+		
 		if(e.getSource()!=molebutton) {
 			speak("no, wrong button!");
 			
@@ -59,9 +62,19 @@ public class Whackamole implements ActionListener{
 		}else {
 				
 			speak("Right Button!");	
-			a++;
+			moleswhacked++;
+			frame.dispose();
+			CreateUI(f.nextInt(34));
+		
+		if(moleswhacked==5){
+			endGame(timeAtStart,5);
+			
+			
 		}
+		}
+			
 	}
+	
 		
 	void speak(String words) { 
 	    try { 
@@ -72,7 +85,7 @@ public class Whackamole implements ActionListener{
 	}
 	
 	private void endGame(Date timeAtStart, int molesWhacked) { 
-	    Date timeAtEnd = new Date(molesWhacked);
+	    Date timeAtEnd = new Date();
 	    JOptionPane.showMessageDialog(null, "Your whack rate is "
 	            + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
 	                  + " moles per second.");
