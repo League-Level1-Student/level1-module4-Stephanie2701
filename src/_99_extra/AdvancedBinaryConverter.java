@@ -60,7 +60,7 @@ public class AdvancedBinaryConverter implements ActionListener {
 
 		// 8. Create a new JLabel with the text "ASCII:"
 		JLabel label= new JLabel();
-		label.setText("ASCIT");
+		label.setText(" ASCII ");
 		
 
 		// 9. Call the addObjectToPanel() method to add the new label to row 2, column 0
@@ -72,7 +72,7 @@ public class AdvancedBinaryConverter implements ActionListener {
 		
 		// 11. Create a new JLabel with the text "Decimal:"
 		JLabel label2= new JLabel();
-		label2.setText("Decimal");
+		label2.setText(" Decimal ");
 		
 		
 		// 12. Add the label from step 11. to row 3, column 0 of the panel
@@ -93,24 +93,35 @@ public class AdvancedBinaryConverter implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 
 		// 18. If convertButton was pressed...
-		If(e.getSource()==convertButton){
+		if(e.getSource()==convertButton){
 		
 			// 19. Get the text from inputTextField and save it to a new String variable
-			String r= convertButton();
+			
+			String input= inputTextField.getText();
+			
+			
 			// 20. Call binaryToAscii() with the text from step 19 and save the result in a new String variable
 			
+			String ascii= binaryToAscii(input);
 			// 21. Set the text of asciiResult to the new String
+			String y = ascii;
+			
 			
 			// 22. Call binaryToInt() with the text from step 19 and save the result in a new String variable
+			String Int= binaryToInt(input);
 			
 			// 23. Set the text of decimalResult to the new String
+			String resultofInt= Int;
+			
 			
 			// 24. Call binaryToHex() with the text from step 19 and save the result in a new String variable
-			
+			String Hex= binaryToHex(input);
 			// 25. Set the text of hexResult to the new String
+			String hexresult= Hex;
+		}
 			
 			// OPTIONAL: Create your own methods to convert binary to decimal (base 10) and
 			//           binary to hexidecimal (base 16) without using the Integer.parseInt() method!
